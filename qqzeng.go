@@ -102,6 +102,10 @@ func (p *IPSearch) Get(ip string) (result *Result) {
 	if ip == "" {
 		return
 	}
+	//ipv4合法性
+	if strings.Count(ip, ".") != 3 {
+		return
+	}
 	ip = strings.TrimSpace(ip)
 	s := p.get(ip)
 	ss := strings.Split(s, "|")
